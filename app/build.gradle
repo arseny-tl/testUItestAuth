@@ -4,12 +4,14 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
-    compileSdkVersion 26
+    compileSdkVersion 27
     defaultConfig {
         applicationId "com.creativelounge.testuitestauth"
         minSdkVersion 22
-        targetSdkVersion 26
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -22,23 +24,43 @@ android {
     }
 }
 
+kapt {
+    generateStubs = true
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support:appcompat-v7:27.0.2'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:design:27.0.2'
 
 
     compile "org.jetbrains.anko:anko:0.10.4"
     compile "com.android.support.constraint:constraint-layout:1.1.0-beta4"
-    compile "com.squareup.retrofit2:converter-moshi:2.3.0"
+
+
+    //reactivX
     compile "io.reactivex.rxjava2:rxkotlin:2.2.0"
     compile "io.reactivex.rxjava2:rxandroid:2.0.1"
-    compile "com.tspoon.traceur:traceur:1.0.1"
-//    compile "com.tbruyelle.rxpermissions:rxpermissions:2.3.0"
-    compile  "com.squareup.retrofit2:retrofit:$versions_retrofit"
+
+
+    //dagger2
+    compile 'com.google.dagger:dagger:2.14.1'
+    compile 'com.google.dagger:dagger-android:2.14.1'
+    compile 'com.google.dagger:dagger-android-support:2.14.1'
+    provided 'org.glassfish:javax.annotation:10.0-b28'
+    kapt 'com.google.dagger:dagger-compiler:2.14.1'
+
+    //retrofit
+    compile "com.squareup.retrofit2:retrofit:$versions_retrofit"
     compile "com.squareup.retrofit2:adapter-rxjava2:$versions_retrofit"
     compile "com.squareup.retrofit2:converter-moshi:$versions_retrofit"
+
+
+    //butterknife
+    compile 'com.jakewharton:butterknife:8.8.1'
+    kapt 'com.jakewharton:butterknife-compiler:8.8.1'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'

@@ -6,8 +6,8 @@ interface ViewPresentContract {
     interface AuthContract{
         interface View : MvpView {
             // get text from field
-            val username: String
-            val password: String
+            var username: String?
+            var password: String?
 
             // show field with label
             fun showLoginScreen(labelResId: Int)

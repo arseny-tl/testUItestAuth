@@ -5,8 +5,8 @@ import com.creativelounge.testuitestauth.presents.ViewPresentContract
 import android.support.v7.app.AppCompatActivity
 
 class AuthView : AppCompatActivity(), ViewPresentContract.AuthContract.View{
-    override val username: String?
-    val password: String?
+    override var username: String? = null
+    override var password: String? = null
 
     @Override
     override fun onCreate(savedInstanceState: Bundle?) {
