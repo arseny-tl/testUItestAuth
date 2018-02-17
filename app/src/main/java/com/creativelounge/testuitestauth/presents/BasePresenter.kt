@@ -13,13 +13,16 @@ abstract class BasePresenter<T : MvpView> : MvpPresenter<T>{
     override fun viewIsReady() {
     }
 
-    open fun getView(): T = view?:throw(Throwable(""))
+    open fun getView(): T = view?:throw(Throwable("Nothing to get"))
 
     @Override
     override fun detachView() {
-        this.view = null
+        view = null
     }
 
+    protected open fun isViewAttached(): Boolean = view == null
+
+    @Override
     override fun destroy() {
     }
 }
